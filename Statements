@@ -8,6 +8,8 @@ for i in st.split():
  for i in range(0,11,2):
     print(i)
     
+Alternate Solution: list(range(0,11,2))
+    
   #Use a List Comprehension to create a list of all numbers between 1 and 50 that are divisible by 3.
   l=[i for i in range(1,51) if (i%3==0)]
   print(l)
@@ -37,3 +39,5 @@ l=[]
 for i in st.split():
     l.append(i[0])
 print(l)
+
+Alternate Solution: [word[0] for word in st.split()]
