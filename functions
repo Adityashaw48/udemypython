@@ -4,12 +4,12 @@
 
 def lesser_of_two_evens(a,b):
     if(a%2==0 and b%2==0):
-        if(a<b):
+        if(a<b):            #Alternate Sol: using Min and Max function   min(a,b)
             print(a)
         else:
             print(b)
     else:
-        if (a<b):
+        if (a<b):            #Alternate Sol: using Min and Max function   max(a,b)
             print(b)
         else:
             print(a)
@@ -19,8 +19,8 @@ def lesser_of_two_evens(a,b):
 #animal_crackers('Crazy Kangaroo') --> False
 
 def animal_crackers(text):
-    l=[]
-    for i in text.split():
+    l=[]                        #while splitting can use lower function also text.lower().split()
+    for i in text.split():     #Alternate Soln can be double index call i[0][0]=i[1][0]  
         l.append(i[0])
     if (l[0]==l[1]):
         print(True)
@@ -60,7 +60,7 @@ def master_yoda(text):
     
   #ALMOST THERE: Given an integer n, return True if n is within 10 of either 100 or 200
   def almost_there(n):
-    if(89<n<111 or 189<n<211):
+    if(89<n<111 or 189<n<211):       #Alternate Soln: abs(100-n)<=10 or abs(200-n)<=10
         print(True)
     else:
         print(False)
@@ -72,7 +72,7 @@ def master_yoda(text):
 def has_33(nums):
     a=0
     for i in range(0,len(nums)-1):
-        if(nums[i]==3 and nums[i+1]==3):
+        if(nums[i]==3 and nums[i+1]==3):     #alternate way of writting the same exp: nums[i:i+2]=[3,3]
             print(True)
             a=1
             break
@@ -94,3 +94,107 @@ def paper_doll(text):
 #blackjack(9,9,9) --> 'BUST'
 #blackjack(9,9,11) --> 19
 
+def blackjack(a,b,c):
+    if (a+b+c<=21):                                     #sum function can be used as sum(a,b,c)
+        print(a+b+c)
+    elif (a+b+c>21 and (a==11 or b==11 or c==11)):      # to check if 11 is present in list: 11 in [a,b,c]
+        print(a+b+c-10)
+    else:
+        print('BUST')
+        
+#SUMMER OF '69: Return the sum of the numbers in the array, except ignore sections of numbers starting with a 6 and extending to the next 9 (every 6 will be followed by at least one 9). Return 0 for no numbers.¶
+#summer_69([1, 3, 5]) --> 9
+#summer_69([4, 5, 6, 7, 8, 9]) --> 9
+#summer_69([2, 1, 6, 9, 11]) --> 14
+
+def summer_69(arr):
+    total=0
+    add=True
+    for i in arr:
+        while add:
+            if i!=6:
+                total+=i
+                break
+            else:
+                add=False
+        while not add:
+            if i!=9:
+                break
+            else:
+                add=True
+                break
+    print(total)
+            
+                
+
+
+
+#SPY GAME: Write a function that takes in a list of integers and returns True if it contains 007 in order
+ #spy_game([1,2,4,0,0,7,5]) --> True
+ #spy_game([1,0,2,4,0,5,7]) --> True
+ #spy_game([1,7,2,0,4,5,0]) --> False
+
+def spy_game(nums):
+    l=[]
+    for i in nums:
+        if i==0 or i==7:
+            l.append(i)
+    if l==[0,0,7]:
+        print(True)
+    else:
+        print(False)
+        
+######Alternate Solution of the above code
+def spy_game(nums):
+
+    code = [0,0,7,'x']
+    
+    for num in nums:
+        if num == code[0]:
+            code.pop(0)   # code.remove(num) also works
+       
+    return len(code) == 1
+#####################
+        
+        
+#COUNT PRIMES: Write a function that returns the number of prime numbers that exist up to and including a given number
+#count_primes(100) --> 25
+#By convention, 0 and 1 are not prime.
+
+def count_primes(num):
+    cnt=0
+    p=0
+    if num==0 and num==1:
+        print(0)
+    else:
+        for i in range(2,num+1):
+            for j in range(1,i+1):
+                if i%j==0:
+                    cnt+=1
+            if cnt<=2:
+                p+=1
+            cnt=0
+        print(p)
+
+
+
+###Alternate Solution:
+
+def count_primes(num):
+    primes = [2]
+    x = 3
+    if num < 2:  # for the case of num = 0 or 1
+        return 0
+    while x <= num:
+        for y in range(3,x,2):  # test all odd factors up to x-1
+            if x%y == 0:
+                x += 2
+                break
+        else:
+            primes.append(x)
+            x += 2
+    print(primes)
+    return len(primes)
+   
+ 
+ 
