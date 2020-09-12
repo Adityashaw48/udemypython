@@ -1,0 +1,63 @@
+#Fill in the Line class methods to accept coordinates as a pair of tuples and return the slope and distance of the line.
+
+class Line:
+    
+    def __init__(self,coor1,coor2):
+        self.x_coor1=coor1[0]
+        self.y_coor1=coor1[1]
+        self.x_coor2=coor2[0]
+        self.y_coor2=coor2[1]
+    
+    def distance(self):
+        d=((self.x_coor2-self.x_coor1)**2 +(self.y_coor2-self.y_coor1)/(self.x_coor2-self.x_coor1)**2)**(1/2)
+        print(d)
+    
+    def slope(self):
+        s=(self.y_coor2-self.y_coor1)/(self.x_coor2-self.x_coor1)
+        print(s)
+        
+#Fill in the class
+ 
+ class Cylinder:
+    
+    pi=3.14
+    
+    def __init__(self,height=1,radius=1):
+        self.radius=radius
+        self.height=height
+        
+    def volume(self):
+        print((self.pi)*(self.radius**2)*(self.height))
+    
+    def surface_area(self):
+        print((2*self.pi*self.radius)*(self.radius+self.height))
+        
+##For this challenge, create a bank account class that has two attributes:
+
+owner
+balance
+and two methods:
+
+deposit
+withdraw
+As an added requirement, withdrawals may not exceed the available balance.
+
+#Instantiate your class, make several deposits and withdrawals, and test to make sure the account can't be overdrawn.
+
+class Account:
+    def __init__(self,owner,balance):
+        self.owner=owner
+        self.balance=balance
+    def deposit(self,dep):
+        self.dep=dep
+        print('Remaining Balance:',self.balance+self.dep)
+        self.balance=self.balance+self.dep
+    def withdraw(self,draw):
+        self.draw=draw
+        if self.draw<=self.balance:
+            print('Remaining Balance:', self.balance-self.draw)
+            self.balance=self.balance-self.draw
+        else:
+            print('Funds Unavailable!')
+    def __str__(self):
+        return f'Account owner:   {self.owner}\nAccount balance: ${self.balance}'
